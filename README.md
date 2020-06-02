@@ -1,5 +1,39 @@
 # Elixir tips
 
+- [Elixir tips](#elixir-tips)
+  - [Spliting strings with sigils](#spliting-strings-with-sigils)
+  - [Creating an array containing the alphabet](#creating-an-array-containing-the-alphabet)
+  - [Multiple expressions on single line](#multiple-expressions-on-single-line)
+  - [Finding list of bound values in iex](#finding-list-of-bound-values-in-iex)
+  - [Integer to float](#integer-to-float)
+  - [If/else alternative](#ifelse-alternative)
+  - [Multiple OR](#multiple-or)
+  - [Inspecting data types](#inspecting-data-types)
+    - [`i/1`](#i1)
+  - [Creating custom sigils](#creating-custom-sigils)
+  - [Custom errors](#custom-errors)
+  - [Get a value from nested maps](#get-a-value-from-nested-maps)
+  - [`with` statement benefits](#with-statement-benefits)
+  - [Using module `Kernel` with pipelines](#using-module-kernel-with-pipelines)
+  - [Short circuit operators `&&` and `||`](#short-circuit-operators--and)
+    - [`||` operator](#operator)
+    - [`&&` operator](#operator-1)
+  - [Finding substrings](#finding-substrings)
+  - [Check if a module is loaded or not](#check-if-a-module-is-loaded-or-not)
+  - [Binary to capital atom](#binary-to-capital-atom)
+  - [Pattern match VS destructure](#pattern-match-vs-destructure)
+  - [Inspect with :label](#inspect-with-label)
+  - [Subtraction over lists](#subtraction-over-lists)
+    - [on lists](#on-lists)
+    - [on charlists](#on-charlists)
+  - [Aliasing multiple modules](#aliasing-multiple-modules)
+  - [Substring](#substring)
+  - [Initializing multiple with same value](#initializing-multiple-with-same-value)
+  - [Checking the closeness of strings](#checking-the-closeness-of-strings)
+  - [Chain of OR in guards](#chain-of-or-in-guards)
+  - [Replacing a key in a map](#replacing-a-key-in-a-map)
+  - [Generate 4 digit random number](#generate-4-digit-random-number)
+
 ## Spliting strings with sigils
 
 ```elixir
@@ -69,13 +103,13 @@ iex(4)> smallest = x<y && x || y
 
 This is not the recommended approach because in regular approach when the condition evaluates to true , it stops executing the remaining conditions which saves time of evaluation unlike this approach which evaluates all conditions first in list. This is just bad but good for discoveries.
 
-### Regular Approach
+- Regular Approach
 
 ```elixir
 find = fn(x) when x>10 or x<5 or x==7 -> x end
 ```
 
-### Our Hack
+- Our Hack
 
 ```elixir
 hell = fn(x) when true in [x>10, x<5, x==7] -> x end
